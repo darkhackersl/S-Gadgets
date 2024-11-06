@@ -36,6 +36,36 @@
     
 <script src="/contentDetails.js"></script>
 
+    <div id="reviewsSection">
+    <h2>User Reviews</h2>
+    <div id="reviewsList">
+        <!-- Reviews will be dynamically inserted here -->
+    </div>
+    <form id="reviewForm">
+        <textarea id="reviewText" placeholder="Write your review here"></textarea>
+        <input type="number" id="reviewRating" min="1" max="5" placeholder="Rating (1-5)">
+        <button type="submit">Submit Review</button>
+    </form>
+</div>
+
+<script>
+document.getElementById('reviewForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const reviewText = document.getElementById('reviewText').value;
+    const reviewRating = document.getElementById('reviewRating').value;
+    // Here you would typically send this data to your server
+    // For now, we'll just add it to the page
+    addReview(reviewText, reviewRating);
+});
+
+function addReview(text, rating) {
+    const reviewsList = document.getElementById('reviewsList');
+    const reviewElement = document.createElement('div');
+    reviewElement.innerHTML = `<p>Rating: ${rating}/5</p><p>${text}</p>`;
+    reviewsList.appendChild(reviewElement);
+}
+</script>
+
 <!-- FOOTER -->
 <div id="4"></div>
 <script>
